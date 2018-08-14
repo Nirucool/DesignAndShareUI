@@ -1,0 +1,497 @@
+import React, {Component} from 'react';
+import {withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {Label} from 'reactstrap';
+import HeaderUser from './HeaderUser';
+import Footer from './Footer';
+import {CardDeck} from 'reactstrap';
+import {IconButton, Typography, CardContent, CardMedia, Card} from '@material-ui/core';
+
+
+class DIY extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            design: [], firstName: this.props.firstName, lastName: this.props.lastName,
+            patioImage:'',patioCount:'',patioLikes:[],patio:[],
+            kidsRoomImage: '', kidsRoomCount: '', kidsRoomLikes: [], kidsRoom: [],
+            bedroomImage: '', bedroomCount: '', bedroomLikes: [], bedroom: [],
+            kitchenGardenImage: '', kitchenGardenCount: '', kitchenGardenLikes: [], kitchenGarden: [],
+            livingRoomImage: '', livingRoomCount: '', livingRoomLikes: [], livingRoom: [],
+            kitchenImage: '', kitchenCount: '', kitchenLikes: [], kitchen: [],
+            diy: [{diyImage: '', diyCount: 0, diyLikes: []}],
+            file: '', diyPhoto: '', diyAllImages: [], diyImages:[],
+            diyCount: [], diyAllCount: [], diyLikes: [], diyAllLikes: []
+        }
+    }
+
+    //onChange common method for input elements
+    onChange = (e) => {
+        this.props.dispatch({
+            type: 'ONCHANGE',
+            key: e.target.name,
+            payload: e.target.value
+        });
+
+    };
+
+    //componentDidMount method to load data before view is rendered
+    componentWillMount() {
+        //get for design
+        fetch('https://designandsharebackend.herokuapp.com/design/', {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            withCredentials: true,
+            credentials: 'same-origin',
+        }).then(response => response.json())
+            .then(result => this.setDesignDetails(result))
+            .catch(error => console.log(error));
+    };
+
+    //set all details of patio images in state and other image details
+    setDesignDetails = (result) => {
+        this.state.design = result;
+        this.setState({
+            design: this.state.design
+        });
+        let count=0;
+        this.state.design.map((val, id) => {
+            if (val.diy != null) {
+
+                if (val.userName === this.props.userName) {
+                    count=1;
+                    val.diy.map((design, id) => {
+                        if (design.diyImage !== null && design.diyImage !== undefined) {
+                            this.state.diyImages.push(design.diyImage);
+                            if (id === 0) {
+                                this.state.diy[0].diyImage = design.diyImage;
+                            }
+                        }
+                        if (design.diyCount !== null && design.diyCount !== undefined) {
+                            this.state.diyCount.push(design.diyCount);
+                            if (id === 0) {
+                                this.state.diy[0].diyCount = design.diyCount;
+                            }
+                        }
+                        if (design.diyImages !== null && design.diyImages !== undefined) {
+                            this.state.diyImages.push(design.diyImages);
+                            if (id === 0) {
+                                this.state.diy[0].diyImages = design.diyImages;
+                            }
+                        }
+                        if (id > 0) {
+                            this.state.diy = [...this.state.diy, design];
+                        }
+                    })
+                }
+                val.diy.map((design, id) => {
+                    if (design !== null && design !== undefined) {
+                        this.state.diyAllImages.push(design.diyImage);
+                        this.state.diyAllCount.push(design.diyCount);
+                        this.state.diyAllLikes.push(design.diyLikes);
+                    }
+                });
+            }
+        });
+        if (this.state.diy[0].diyImage==="") {
+
+            this.state.diy.splice(0, 1);
+
+        }
+        console.log(this.state.diy);
+        console.log(this.state.diyAllLikes);
+        this.setState({
+            diyAllLikes: this.state.diyAllLikes,
+            diyAllCount: this.state.diyAllCount,
+            diyAllImages: this.state.diyAllImages,
+            diyImages: this.state.diyImages,
+            diyCount: this.state.diyCount,
+            diyLikes: this.state.diyLikes,
+            diy: this.state.diy,
+        });
+    };
+
+    handleSubmit(e) {
+        e.preventDefault();
+        const data = {};
+        data["userName"] = this.props.userName + "";
+        data["password"] = this.props.password + "";
+        data["firstName"] = this.props.firstName + "";
+        data["lastName"] = this.props.lastName + "";
+        this.state.diy = [...this.state.diy, {diyImage: this.state.diyPhoto,
+            diyCount: 0, diyLikes: []}];
+        this.setState({diy: this.state.diy});
+        const bedroom = [];
+        const patio=[];
+        const kidsRoom = [];
+        const livingRoom = [];
+        const kitchen = [];
+        const kitchenGarden = [];
+        const diy = [];
+        this.state.diy.map((design, id) => {
+            const data1 = {};
+            if (id !== this.state.diy.length) {
+                data1["diyImage"] = design.diyImage + "";
+            }
+            if (id !== this.state.diy.length && design.diyCount !== undefined) {
+                data1["diyCount"] = design.diyCount + "";
+            }
+            if (id !== this.state.diy.length && design.diyLikes !== undefined) {
+                data1["diyLikes"] = [];
+            }
+            diy.push(data1);
+        });
+
+        this.state.design.map((val, idx) => {
+            if(idx!==this.state.design) {
+                if (val.userName === this.props.userName) {
+                    val.patio.map((design, id) => {
+                        const data1 = {};
+                        if (id !== val.patio.length) {
+                            data1["patioImage"] = design.patioImage + "";
+                            data1["patioCount"] = design.patioCount + "";
+                            data1["patioLikes"] = design.patioLikes;
+                        }
+                        patio.push(data1);
+                    });
+                    val.kidsRoom.map((design, id) => {
+                        const data1 = {};
+                        if (id !== val.kidsRoom.length) {
+                            data1["kidsRoomImage"] = design.kidsRoomImage + "";
+                            data1["kidsRoomCount"] = design.kidsRoomCount + "";
+                            data1["kidsRoomLikes"] = design.kidsRoomLikes;
+                        }
+                        kidsRoom.push(data1);
+                    });
+                    val.bedroom.map((design, id) => {
+                        const data1 = {};
+                        if (id !== val.bedroom.length) {
+                            data1["bedroomImage"] = design.bedroomImage + "";
+                            data1["bedroomCount"] = design.bedroomCount + "";
+                            data1["bedroomLikes"] = design.bedroomLikes;
+                        }
+                        bedroom.push(data1);
+                    });
+                    val.livingRoom.map((design, id) => {
+                        const data1 = {};
+                        if (id !== val.livingRoom.length) {
+                            data1["livingRoomImage"] = design.livingRoomImage + "";
+                            data1["livingRoomCount"] = design.livingRoomCount + "";
+                            data1["livingRoomLikes"] = design.livingRoomLikes;
+                        }
+                        livingRoom.push(data1);
+                    });
+                    val.kitchenGarden.map((design, id) => {
+                        const data1 = {};
+                        if (id !== val.kitchenGarden.length) {
+                            data1["kitchenGardenImage"] = design.kitchenGardenImage + "";
+                            data1["kitchenGardenCount"] = design.kitchenGardenCount + "";
+                            data1["kitchenGardenLikes"] = design.kitchenGardenLikes;
+                        }
+                        kitchenGarden.push(data1);
+                    });
+                    val.kitchen.map((design, id) => {
+                        const data1 = {};
+                        if (id !== val.kitchen.length) {
+                            data1["kitchenImage"] = design.kitchenImage + "";
+                            data1["kitchenCount"] = design.kitchenCount + "";
+                            data1["kitchenLikes"] = design.kitchenLikes;
+                        }
+                        kitchen.push(data1);
+                    });
+                }
+            }
+
+
+        });
+
+        data["patio"]=patio;
+        data["bedroom"] = bedroom;
+        data["kidsRoom"] = kidsRoom;
+        data["livingRoom"] = livingRoom;
+        data["kitchen"] = kitchen;
+        data["kitchenGarden"] = kitchenGarden;
+        data["diy"] = diy;
+        console.log(JSON.stringify(data, null, 4));
+        fetch('https://designandsharebackend.herokuapp.com/design/', {
+            body: JSON.stringify(data),
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json; charset=utf-8',
+                'Access-Control-Allow-Origin': '*',
+            },
+            withCredentials: true,
+            credentials: 'same-origin',
+        }).then(response => {
+            console.log(response)
+        })
+            .catch(error => console.log(error));
+    }
+
+    handleImageChange(e) {
+        e.preventDefault();
+
+        let reader = new FileReader();
+        let file = e.target.files[0];
+
+        reader.onloadend = () => {
+            this.state.file = file;
+            this.state.diyPhoto = reader.result;
+            this.state.diyImages.push(this.state.diyPhoto);
+            this.setState({
+                file: this.state.file,
+                diyPhoto: this.state.diyPhoto,
+                diyImages: this.state.diyImages,
+            });
+        };
+
+        reader.readAsDataURL(file);
+    }
+
+    //setLoginDetails
+    handleCount = (idx) => (evt) => {
+        if (this.state.diyAllLikes[idx].includes(this.props.userName)) {
+            this.state.diyAllCount[idx] = parseInt(this.state.diyAllCount[idx]) - 1;
+            let index = this.state.diyAllLikes[idx].indexOf(this.props.userName);
+            this.state.diyAllLikes[idx].splice(index, 1);
+            this.setState({
+                diyAllCount: this.state.diyAllCount,
+                diyAllLikes: this.state.diyAllLikes,
+            });
+
+        }
+        else {
+            this.state.diyAllCount[idx] = parseInt(this.state.diyAllCount[idx]) + 1;
+            this.state.diyAllLikes[idx].push(this.props.userName);
+            this.setState({
+                diyAllCount: this.state.diyAllCount,
+                diyAllLikes: this.state.diyAllLikes,
+            });
+            console.log(this.state.diyAllCount[idx]);
+            console.log(this.state.diyAllLikes[idx]);
+        }
+
+        let index=0;
+        this.state.design.map((val, id) => {
+
+            if (id !== this.state.design.length) {
+                const patio = [];
+                const bedroom=[];
+                const kidsRoom = [];
+                const livingRoom = [];
+                const kitchen = [];
+                const kitchenGarden = [];
+                const diy = [];
+                const data = {};
+
+                val.diy.map((design, idx) => {
+                    const data1 = {};
+                    if (idx !== val.diy.length) {
+                        data1["diyImage"] = design.diyImage + "";
+                    }
+
+
+                    if (idx !== val.diy.length) {
+                        data1["diyCount"] = this.state.diyAllCount[index] + "";
+                    }
+
+
+                    if (idx !== val.diy.length) {
+                        data1["diyLikes"] = this.state.diyAllLikes[index];
+                    }
+                    index++;
+                    diy.push(data1);
+
+                });
+                val.patio.map((design, idx) => {
+                    const data1 = {};
+                    if (idx !== val.patio.length) {
+                        data1["patioImage"] = design.patioImage + "";
+                        data1["patioCount"] =design.patioCount + "";
+                        data1["patioLikes"] = design.patioLikes;
+                    }
+                    patio.push(data1);
+                });
+                val.kidsRoom.map((design, id) => {
+                    const data1 = {};
+                    if (id !== val.kidsRoom.length) {
+                        data1["kidsRoomImage"] = design.kidsRoomImage + "";
+                        data1["kidsRoomCount"] = design.kidsRoomCount + "";
+                        data1["kidsRoomLikes"] = design.kidsRoomLikes;
+                    }
+                    kidsRoom.push(data1);
+                });
+                val.bedroom.map((design, id) => {
+                    const data1 = {};
+                    if (id !== val.bedroom.length) {
+                        data1["bedroomImage"] = design.bedroomImage + "";
+                        data1["bedroomCount"] = design.bedroomCount + "";
+                        data1["bedroomLikes"] = design.bedroomLikes;
+                    }
+                    bedroom.push(data1);
+                });
+                val.kitchenGarden.map((design, id) => {
+                    const data1 = {};
+                    if (id !== val.kitchenGarden.length) {
+                        data1["kitchenGardenImage"] = design.kitchenGardenImage + "";
+                        data1["kitchenGardenCount"] = design.kitchenGardenCount + "";
+                        data1["kitchenGardenLikes"] = design.kitchenGardenLikes;
+                    }
+                    kitchenGarden.push(data1);
+                });
+                val.livingRoom.map((design, id) => {
+                    const data1 = {};
+                    if (id !== val.livingRoom.length) {
+                        data1["livingRoomImage"] = design.livingRoomImage + "";
+                        data1["livingRoomCount"] = design.livingRoomCount + "";
+                        data1["livingRoomLikes"] = design.livingRoomLikes;
+                    }
+                    livingRoom.push(data1);
+                });
+                val.kitchen.map((design, id) => {
+                    const data1 = {};
+                    if (id !== val.kitchen.length) {
+                        data1["kitchenImage"] = design.kitchenImage + "";
+                        data1["kitchenCount"] = design.kitchenCount + "";
+                        data1["kitchenLikes"] = design.kitchenLikes;
+                    }
+                    kitchen.push(data1);
+                });
+
+
+
+                data["userName"] = val.userName + "";
+                data["password"] = val.password + "";
+                data["firstName"] = val.firstName + "";
+                data["lastName"] = val.lastName + "";
+                data["patio"] = patio;
+                data["bedroom"] = bedroom;
+                data["kidsRoom"] = kidsRoom;
+                data["livingRoom"] = livingRoom;
+                data["kitchen"] = kitchen;
+                data["kitchenGarden"] = kitchenGarden;
+                data["diy"] = diy;
+                console.log(JSON.stringify(data, null, 4));
+
+                fetch('https://designandsharebackend.herokuapp.com/design/', {
+                    body: JSON.stringify(data),
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json; charset=utf-8',
+                        'Access-Control-Allow-Origin': '*',
+                    },
+                    withCredentials: true,
+                    credentials: 'same-origin',
+                }).then(response => {
+                    console.log(response)
+                })
+                    .catch(error => console.log(error));
+            }
+        });
+
+
+    };
+
+    render() {
+        const favourite = (id) => {
+            return ((this.state.diyAllLikes[id].includes(this.props.userName)) ?
+                <IconButton onClick={this.handleCount(id)}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                         viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path
+                            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                            fill="red"/>
+                    </svg>
+                </IconButton> :
+                <IconButton onClick={this.handleCount(id)}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                         viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path
+                            d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z"/>
+                    </svg>
+                </IconButton>)
+        };
+
+        const styles =
+            {
+                media: {
+                    height: 0,
+                    paddingTop: '56.25%',
+                    marginTop: '30'
+                }
+            };
+
+        let {diyPhoto} = this.state;
+        let $imagePreview = null;
+        if (diyPhoto) {
+            $imagePreview = (<img className="img-design" src={diyPhoto}/>);
+        } else {
+            $imagePreview = (<div className="previewText">Please select DIY Design</div>);
+        }
+        return (
+            <div className="main-container">
+                <HeaderUser/>
+                <form className="container">
+                    <div className="previewComponent">
+                        <input className="fileInput"
+                               type="file" style={{marginLeft: '33.33%'}}
+                               onChange={(e) => this.handleImageChange(e)}/>
+
+                        <div className="imgDesignPreview" style={{marginLeft: '33.33%'}}>
+                            {$imagePreview}
+                        </div>
+                        <button className="submitButton"
+                                type="submit"
+                                style={{marginLeft: '45%'}} onClick={(e) => this.handleSubmit(e)}>Save Image
+                        </button>
+                    </div>
+                    <div className='card-list'>
+                        <Label htmlFor="isbn" style={{fontStyle: 'oblique', fontSize: '30px'}}>DIY</Label>
+                        <CardDeck>
+                            {this.state.diyAllImages.map((tile, id) => (
+                                    <Card style={{display: 'grid', height: '33.33%', width: '33.33%'}}>
+                                        <CardMedia
+                                            className="media"
+                                            image={tile}
+                                            title="Patio Images"
+                                            style={styles.media}/>
+                                        <CardContent>
+                                            <Typography>
+                                                {favourite(id)}
+                                                {this.state.diyAllCount[id] + " likes " + this.state.diyAllLikes[id]}
+                                            </Typography>
+                                        </CardContent>
+                                    </Card>
+                                )
+                            )}
+                        </CardDeck>
+                    </div>
+                </form>
+                <div>
+                    <Footer/>
+                </div>
+            </div>
+        );
+    }
+}
+
+function mapStateToProps(state) {
+    return {
+        userName: state.userName,
+        password: state.password,
+        firstName: state.firstName,
+        lastName: state.lastName
+
+    };
+}
+
+export default withRouter(connect(mapStateToProps)(DIY));
+
