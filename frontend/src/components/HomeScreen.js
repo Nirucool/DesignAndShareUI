@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {withRouter, Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {userActions} from '../actions';
 import HeaderUser from './HeaderUser';
 import Footer from './Footer';
 import {CardDeck} from 'reactstrap';
@@ -112,11 +111,6 @@ class HomeScreen extends Component {
         });
     };
 
-    handleLink = (e) => {
-        e.preventDefault();
-        const {dispatch} = this.props;
-        dispatch(userActions.loginRequest(this.state));
-    };
 
     render() {
         const styles =
@@ -162,7 +156,7 @@ class HomeScreen extends Component {
                                     </CardContent>
                                 </Card>
                             )
-                        )}:
+                        )}
                         </CardDeck>
                     </div>
 

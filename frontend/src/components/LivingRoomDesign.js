@@ -141,7 +141,7 @@ class LivingRoomDesign extends Component {
                 data1["livingRoomCount"] = design.livingRoomCount + "";
             }
             if (id !== this.state.livingRoom.length && design.livingRoomLikes !== undefined) {
-                data1["livingRoomLikes"] = [];
+                data1["livingRoomLikes"] = design.livingRoomLikes;
             }
             livingRoom.push(data1);
         });

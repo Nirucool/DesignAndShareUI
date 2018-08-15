@@ -141,7 +141,7 @@ class KitchenGardenDesign extends Component {
                 data1["kitchenGardenCount"] = design.kitchenGardenCount + "";
             }
             if (id !== this.state.kitchenGarden.length && design.kitchenGardenLikes !== undefined) {
-                data1["kitchenGardenLikes"] = [];
+                data1["kitchenGardenLikes"] = design.kitchenGardenLikes;
             }
             kitchenGarden.push(data1);
         });

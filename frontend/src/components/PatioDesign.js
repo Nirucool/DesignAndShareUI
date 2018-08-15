@@ -95,12 +95,14 @@ class PatioDesign extends Component {
                     if (design !== null && design !== undefined) {
                         this.state.patioAllCount.push(design.patioCount);
                     }
-                    if (design !== null && design !== undefined && design.patioLikes !== null) {
+                    if (design !== null && design !== undefined) {
                         this.state.patioAllLikes.push(design.patioLikes);
                     }
                 });
             }
         });
+        console.log(this.state.patioAllLikes);
+        console.log(this.state.patioLikes);
         if (this.state.patio[0].patioImage === "") {
 
             this.state.patio.splice(0, 1);
@@ -146,7 +148,7 @@ class PatioDesign extends Component {
 
 
             if (id !== this.state.patio.length && design.patioLikes !== undefined) {
-                data1["patioLikes"] = [];
+                data1["patioLikes"] = design.patioLikes;
             }
             patio.push(data1);
 
@@ -398,7 +400,6 @@ class PatioDesign extends Component {
                     .catch(error => console.log(error));
             }
         });
-
 
     };
 

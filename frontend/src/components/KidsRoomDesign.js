@@ -141,7 +141,7 @@ class KidsRoomDesign extends Component {
                 data1["kidsRoomCount"] = design.kidsRoomCount + "";
             }
             if (id !== this.state.kidsRoom.length && design.kidsRoomLikes !== undefined) {
-                data1["kidsRoomLikes"] = [];
+                data1["kidsRoomLikes"] = design.kidsRoomLikes;
             }
             kidsRoom.push(data1);
         });

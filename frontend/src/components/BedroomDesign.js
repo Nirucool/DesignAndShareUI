@@ -140,7 +140,7 @@ class BedroomDesign extends Component {
                 data1["bedroomCount"] = design.bedroomCount + "";
             }
             if (id !== this.state.bedroom.length && design.bedroomLikes !== undefined) {
-                data1["bedroomLikes"] = [];
+                data1["bedroomLikes"] = design.bedroomLikes;
             }
             bedroom.push(data1);
         });

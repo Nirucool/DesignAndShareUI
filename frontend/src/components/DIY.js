@@ -141,7 +141,7 @@ class DIY extends Component {
                 data1["diyCount"] = design.diyCount + "";
             }
             if (id !== this.state.diy.length && design.diyLikes !== undefined) {
-                data1["diyLikes"] = [];
+                data1["diyLikes"] = design.diyLikes;
             }
             diy.push(data1);
         });

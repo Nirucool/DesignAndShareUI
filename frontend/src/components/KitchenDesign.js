@@ -141,7 +141,7 @@ class KitchenDesign extends Component {
                 data1["kitchenCount"] = design.kitchenCount + "";
             }
             if (id !== this.state.kitchen.length && design.kitchenLikes !== undefined) {
-                data1["kitchenLikes"] = [];
+                data1["kitchenLikes"] = design.kitchenLikes;
             }
             kitchen.push(data1);
         });
