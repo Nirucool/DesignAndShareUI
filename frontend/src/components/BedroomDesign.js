@@ -230,17 +230,6 @@ class BedroomDesign extends Component {
             console.log(response)
         })
             .catch(error => console.log(error));
-        this.setState(
-            {
-                bedroomAllImages: [],
-                bedroomAllCount: [],
-                bedroomAllLikes: [],
-                bedroomImages: [],
-                bedroomCount: [],
-                bedroomLikes:[],
-                bedroom: [{bedroomImage: '', bedroomCount: 0, bedroomLikes: []}],
-            });
-        window.location.reload();
     }
 
     handleImageChange(e) {

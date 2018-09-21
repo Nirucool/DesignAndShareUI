@@ -231,17 +231,6 @@ class KitchenDesign extends Component {
             console.log(response)
         })
             .catch(error => console.log(error));
-        this.setState(
-            {
-                kitchenAllImages: [],
-                kitchenAllCount: [],
-                kitchenAllLikes: [],
-                kitchenImages: [],
-                kitchenCount: [],
-                kitchenLikes:[],
-                kitchen: [{kitchenImage: '', kitchenCount: 0, kitchenLikes: []}],
-            });
-        window.location.reload();
     }
 
     handleImageChange(e) {

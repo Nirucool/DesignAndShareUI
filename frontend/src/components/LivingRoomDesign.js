@@ -231,17 +231,6 @@ class LivingRoomDesign extends Component {
             console.log(response)
         })
             .catch(error => console.log(error));
-        this.setState(
-            {
-                livingRoomAllImages: [],
-                livingRoomAllCount: [],
-                livingRoomAllLikes: [],
-                livingRoomImages: [],
-                livingRoomCount: [],
-                livingRoomLikes:[],
-                livingRoom: [{livingRoomImage: '', livingRoomCount: 0, livingRoomLikes: []}],
-            });
-        window.location.reload();
     }
 
     handleImageChange(e) {

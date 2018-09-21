@@ -231,17 +231,6 @@ class KitchenGardenDesign extends Component {
             console.log(response)
         })
             .catch(error => console.log(error));
-        this.setState(
-            {
-                kitchenGardenAllImages: [],
-                kitchenGardenAllCount: [],
-                kitchenGardenAllLikes: [],
-                kitchenGardenImages: [],
-                kitchenGardenCount: [],
-                kitchenGardenLikes:[],
-                kitchenGarden: [{kitchenGardenImage: '', kitchenGardenCount: 0, kitchenGardenLikes: []}],
-            });
-        window.location.reload();
     }
 
     handleImageChange(e) {

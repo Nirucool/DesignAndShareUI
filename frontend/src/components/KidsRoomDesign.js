@@ -231,17 +231,6 @@ class KidsRoomDesign extends Component {
             console.log(response)
         })
             .catch(error => console.log(error));
-        this.setState(
-            {
-                kidsRoomAllImages: [],
-                kidsRoomAllCount: [],
-                kidsRoomAllLikes: [],
-                kidsRoomImages: [],
-                kidsRoomCount: [],
-                kidsRoomLikes:[],
-                kidsRoom: [{kidsRoomImage: '', kidsRoomCount: 0, kidsRoomLikes: []}],
-            });
-        window.location.reload();
     }
 
     handleImageChange(e) {

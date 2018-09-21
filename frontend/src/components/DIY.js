@@ -231,17 +231,6 @@ class DIY extends Component {
             console.log(response)
         })
             .catch(error => console.log(error));
-        this.setState(
-            {
-                diyAllImages: [],
-                diyAllCount: [],
-                diyAllLikes: [],
-                diyImages: [],
-                diyCount: [],
-                diyLikes:[],
-                diy: [{diyImage: '', diyCount: 0, diyLikes: []}],
-            });
-        window.location.reload();
     }
 
     handleImageChange(e) {
