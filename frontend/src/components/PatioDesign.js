@@ -55,6 +55,8 @@ class PatioDesign extends Component {
     //set all details of patio images in state and other image details
     setDesignDetails = (result) => {
         this.state.design = result;
+        console.log(result);
+        console.log(this.props.userName);
         this.setState({
             design: this.state.design
         });
@@ -101,7 +103,7 @@ class PatioDesign extends Component {
                 });
             }
         });
-        console.log(this.state.patioAllLikes);
+        console.log(this.state.patioAllImages);
         console.log(this.state.patioLikes);
         if (this.state.patio[0].patioImage === "") {
 
@@ -238,6 +240,18 @@ class PatioDesign extends Component {
             console.log(response)
         })
             .catch(error => console.log(error));
+
+        this.setState(
+            {
+                patioAllImages: [],
+                patioAllCount: [],
+                patioAllLikes: [],
+                patioImages: [],
+                patioCount: [],
+                patioLikes:[],
+                patio: [{patioImage: '', patioCount: 0, patioLikes: []}],
+            });
+        window.location.reload();
     }
 
     handleImageChange(e) {
@@ -439,7 +453,7 @@ class PatioDesign extends Component {
         if (patioPhoto) {
             $imagePreview = (<img className="img-design" src={patioPhoto}/>);
         } else {
-            $imagePreview = (<div className="previewText">Please select Patio Design</div>);
+            $imagePreview = (<div className="previewText">Please select patio design</div>);
         }
         return (
             <div className="main-container">
@@ -459,7 +473,7 @@ class PatioDesign extends Component {
                         </button>
                     </div>
                     <div className='card-list'>
-                        <Label htmlFor="isbn" style={{fontStyle: 'oblique', fontSize: '30px'}}>Patio Designs</Label>
+                        <Label htmlFor="isbn" style={{fontStyle: 'oblique', fontSize: '20px'}}>Patio Designs</Label>
                         <CardDeck>
                             {this.state.patioAllImages.map((tile, id) => (
                                     <Card style={{display: 'grid', height: '33.33%', width: '33.33%'}}>

@@ -231,6 +231,17 @@ class LivingRoomDesign extends Component {
             console.log(response)
         })
             .catch(error => console.log(error));
+        this.setState(
+            {
+                livingRoomAllImages: [],
+                livingRoomAllCount: [],
+                livingRoomAllLikes: [],
+                livingRoomImages: [],
+                livingRoomCount: [],
+                livingRoomLikes:[],
+                livingRoom: [{livingRoomImage: '', livingRoomCount: 0, livingRoomLikes: []}],
+            });
+        window.location.reload();
     }
 
     handleImageChange(e) {
@@ -434,7 +445,7 @@ class LivingRoomDesign extends Component {
         if (livingRoomPhoto) {
             $imagePreview = (<img className="img-design" src={livingRoomPhoto}/>);
         } else {
-            $imagePreview = (<div className="previewText">Please select Living Room Design</div>);
+            $imagePreview = (<div className="previewText">Please select living room design</div>);
         }
         return (
             <div className="main-container">
@@ -454,7 +465,7 @@ class LivingRoomDesign extends Component {
                         </button>
                     </div>
                     <div className='card-list'>
-                        <Label htmlFor="isbn" style={{fontStyle: 'oblique', fontSize: '30px'}}>Living Room Designs</Label>
+                        <Label htmlFor="isbn" style={{fontStyle: 'oblique', fontSize: '20px'}}>Living Room Designs</Label>
                         <CardDeck>
                             {this.state.livingRoomAllImages.map((tile, id) => (
                                     <Card style={{display: 'grid', height: '33.33%', width: '33.33%'}}>

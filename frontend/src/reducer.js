@@ -1,5 +1,5 @@
 
- export function reducer(state = {userName: '', password:'',firstName:'',lastName:'',profilePhoto:''}, action) {
+export function reducer(state = {userName: '', password:'',firstName:'',lastName:'',profilePhoto:''}, action) {
 
     switch (action.type) {
 

@@ -2,7 +2,7 @@ import {history} from './history';
 
 export const userActions = {
 
-   updateProfile,loginRequest
+    updateProfile,loginRequest
 
 };
 

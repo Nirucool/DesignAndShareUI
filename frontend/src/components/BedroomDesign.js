@@ -230,6 +230,17 @@ class BedroomDesign extends Component {
             console.log(response)
         })
             .catch(error => console.log(error));
+        this.setState(
+            {
+                bedroomAllImages: [],
+                bedroomAllCount: [],
+                bedroomAllLikes: [],
+                bedroomImages: [],
+                bedroomCount: [],
+                bedroomLikes:[],
+                bedroom: [{bedroomImage: '', bedroomCount: 0, bedroomLikes: []}],
+            });
+        window.location.reload();
     }
 
     handleImageChange(e) {
@@ -433,7 +444,7 @@ class BedroomDesign extends Component {
         if (bedroomPhoto) {
             $imagePreview = (<img className="img-design" src={bedroomPhoto}/>);
         } else {
-            $imagePreview = (<div className="previewText">Please select Bedroom Design</div>);
+            $imagePreview = (<div className="previewText">Please select bedroom design</div>);
         }
         return (
             <div className="main-container">
@@ -453,7 +464,7 @@ class BedroomDesign extends Component {
                         </button>
                     </div>
                     <div className='card-list'>
-                        <Label htmlFor="isbn" style={{fontStyle: 'oblique', fontSize: '30px'}}>Bedroom Designs</Label>
+                        <Label htmlFor="isbn" style={{fontStyle: 'oblique', fontSize: '20px'}}>Bedroom Designs</Label>
                         <CardDeck>
                             {this.state.bedroomAllImages.map((tile, id) => (
                                     <Card style={{display: 'grid', height: '33.33%', width: '33.33%'}}>

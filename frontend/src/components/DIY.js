@@ -231,6 +231,17 @@ class DIY extends Component {
             console.log(response)
         })
             .catch(error => console.log(error));
+        this.setState(
+            {
+                diyAllImages: [],
+                diyAllCount: [],
+                diyAllLikes: [],
+                diyImages: [],
+                diyCount: [],
+                diyLikes:[],
+                diy: [{diyImage: '', diyCount: 0, diyLikes: []}],
+            });
+        window.location.reload();
     }
 
     handleImageChange(e) {
@@ -434,7 +445,7 @@ class DIY extends Component {
         if (diyPhoto) {
             $imagePreview = (<img className="img-design" src={diyPhoto}/>);
         } else {
-            $imagePreview = (<div className="previewText">Please select DIY Design</div>);
+            $imagePreview = (<div className="previewText">Please select diy design</div>);
         }
         return (
             <div className="main-container">
@@ -454,7 +465,7 @@ class DIY extends Component {
                         </button>
                     </div>
                     <div className='card-list'>
-                        <Label htmlFor="isbn" style={{fontStyle: 'oblique', fontSize: '30px'}}>DIY</Label>
+                        <Label htmlFor="isbn" style={{fontStyle: 'oblique', fontSize: '20px'}}>DIY</Label>
                         <CardDeck>
                             {this.state.diyAllImages.map((tile, id) => (
                                     <Card style={{display: 'grid', height: '33.33%', width: '33.33%'}}>

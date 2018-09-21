@@ -7,6 +7,37 @@ import PropTypes from 'prop-types';
 import Edit from './edit.jpg';
 import HeaderUser from './HeaderUser';
 import Footer from './Footer';
+function submissionMessage(errors) {
+    // store errors for all fields in single array
+    var message='';
+    if (errors.length===0) {
+        message=" User has been saved successfully";
+    }
+
+    return message;
+}
+
+function validate(firstName, lastName, userName, password, userNameList) {
+    // store errors for all fields in single array
+    const errors = [];
+    if (userName === "") {
+        errors.push("Please enter User Name");
+    }
+    if (firstName === "") {
+        errors.push("Please enter First Name");
+    }
+    if (lastName === "") {
+        errors.push("Please enter Last Name");
+    }
+    const re = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+    const passwordOk = re.test(password);
+    if (!passwordOk) {
+        errors.push("Invalid password");
+    }
+
+    return errors;
+}
+
 class ProfileScreen extends Component {
 
     constructor(props) {
@@ -23,7 +54,7 @@ class ProfileScreen extends Component {
             lastNameList:[],
             profilePicture:[],
             profilePhoto: this.props.profilePhoto,
-            userDetails:[]};
+            userDetails:[],errors:[],message:''};
         this.toggleEdit = this.toggleEdit.bind(this);
     }
     componentDidMount() {
@@ -100,52 +131,63 @@ class ProfileScreen extends Component {
     }
     saveProfile(event) {
         event.preventDefault();
-        this.setState({isEditing: false});
-        fetch('https://designandsharebackend.herokuapp.com/login/', {
-            body: JSON.stringify({
-                userName:  this.props.userName,
-                password: this.props.password,
-                firstName:this.props.firstName,
-                lastName:this.props.lastName,
-            }),
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json; charset=utf-8',
-                'Access-Control-Allow-Origin':'*',
-            },
-            withCredentials: true,
-            credentials: 'same-origin',
-        }).then(response => {
-            console.log(response)})
-            .catch(error => console.log(error));
+        const errors = validate(this.props.firstName, this.props.lastName, this.props.userName,
+            this.props.password, this.state.userNameList);
+        if (errors.length > 0) {
+            this.setState({errors});
+            return;
+        }
+        if (errors.length === 0) {
+            this.setState({errors: []});
+            var message = submissionMessage(errors);
+            this.setState({message});
+            this.setState({isEditing: false});
+            fetch('https://designandsharebackend.herokuapp.com/login/', {
+                body: JSON.stringify({
+                    userName:  this.props.userName,
+                    password: this.props.password,
+                    firstName:this.props.firstName,
+                    lastName:this.props.lastName,
+                }),
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json; charset=utf-8',
+                    'Access-Control-Allow-Origin':'*',
+                },
+                withCredentials: true,
+                credentials: 'same-origin',
+            }).then(response => {
+                console.log(response)})
+                .catch(error => console.log(error));
 
-       fetch('https://designandsharebackend.herokuapp.com/user/', {
-            body: JSON.stringify({
-                userName:  this.props.userName,
-                password: this.props.password,
-                firstName:this.props.firstName,
-                lastName:this.props.lastName,
-                profilePhoto:this.state.profilePhoto
-            }),
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json; charset=utf-8',
-                'Access-Control-Allow-Origin':'*',
-            },
-            withCredentials: true,
-            credentials: 'same-origin',
-        }).then(response => {
-            console.log(response)})
-            .catch(error => console.log(error));
+            fetch('https://designandsharebackend.herokuapp.com/user/', {
+                body: JSON.stringify({
+                    userName:  this.props.userName,
+                    password: this.props.password,
+                    firstName:this.props.firstName,
+                    lastName:this.props.lastName,
+                    profilePhoto:this.state.profilePhoto
+                }),
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json; charset=utf-8',
+                    'Access-Control-Allow-Origin':'*',
+                },
+                withCredentials: true,
+                credentials: 'same-origin',
+            }).then(response => {
+                console.log(response)})
+                .catch(error => console.log(error));
 
-        const {dispatch}=this.props;
-        this.props.dispatch(userActions.updateProfile(this.state));
-        this.props.dispatch({
-            type: 'UPDATE_PHOTO',
-            payload: this.state.profilePhoto
-        });
+            const {dispatch} = this.props;
+            this.props.dispatch(userActions.updateProfile(this.state));
+            this.props.dispatch({
+                type: 'UPDATE_PHOTO',
+                payload: this.state.profilePhoto
+            });
+        }
 
     }
     toggleEdit(){
@@ -162,7 +204,7 @@ class ProfileScreen extends Component {
 
     }
     render() {
-        let {profilePhoto} = this.state;
+        let {profilePhoto,errors,message} = this.state;
         let $imagePreview = null;
         if (profilePhoto) {
             $imagePreview = (<img className="img-profile" src={profilePhoto} />);
@@ -175,128 +217,43 @@ class ProfileScreen extends Component {
 
                     <HeaderUser/>
                     <form encType="multipart/form-data" className="container" onSubmit={this.onSubmit}>
-
+                        <div style={{marginLeft: '25%', color: 'red'}}>
+                            {errors.map(error => (
+                                <p key={error}>Error: {error}</p>
+                            ))}
+                        </div>
+                        <div style={{marginLeft: '25%',color: 'green'}}>
+                            {message}</div>
                         <FormGroup row>
-                            <Col sm={2}>
+                            <Col sm={3}>
                             </Col>
 
                             <div className="previewComponent">
-                                    <input className="fileInput"
-                                           type="file"  style={{marginLeft:'30%'}}
-                                           onChange={(e)=>this.handleImageChange(e)} />
+                                <input className="fileInput"
+                                       type="file"  style={{marginLeft:'30%'}}
+                                       onChange={(e)=>this.handleImageChange(e)} />
 
                                 <div className="imgPreview">
                                     {$imagePreview}
                                 </div>
                             </div>
                         </FormGroup>
-                            <FormGroup row>
-                                <Col sm={2}>
-                                </Col>
-                                <Col sm={5}>
-                                    <Label htmlFor="title" style={{fontSize:'20px',fontFamily:'Sans Serif',fontWeight: 'bold'}}>My Profile</Label>
-                                </Col>
-                            </FormGroup>
-                            <FormGroup row>
-                                <Col sm={2}>
-                                </Col>
-                                <Col sm={2}>
-                                    <Label htmlFor="isbn" style={{fontWeight: 'bold'}}>First Name</Label>
-                                </Col>
-                                <Col sm={3}>
-                                    <Input type="text" className="form-control" name="firstName" value={this.props.firstName}
+                        <FormGroup row>
+                            <Col sm={3}>
+                            </Col>
+                            <Col sm={5}>
+                                <Label htmlFor="title" style={{fontSize:'20px',fontWeight: 'bold'}}>My Profile</Label>
+                            </Col>
+                        </FormGroup>
+                        <FormGroup row>
+                            <Col sm={3}>
+                            </Col>
+                            <Col sm={2}>
+                                <Label htmlFor="isbn">First Name</Label>
+                            </Col>
+                            <Col sm={3}>
+                                <Input type="text" className="form-control" name="firstName" value={this.props.firstName}
                                        onChange={this.onChange.bind(this)} placeholder="First Name"/></Col>
-                                <Col sm={2}>
-                                </Col>
-                            </FormGroup>
-                            <FormGroup row>
-                                <Col sm={2}>
-                                </Col>
-                                <Col sm={2}>
-                                    <Label htmlFor="isbn" style={{fontWeight: 'bold'}}>Last Name</Label>
-                                </Col>
-                                <Col sm={3}>
-                                    <Input type="text" className="form-control" name="lastName" value={this.props.lastName}
-                                       onChange={this.onChange.bind(this)} placeholder="Last Name"/></Col>
-                                <Col sm={2}>
-                                </Col>
-                            </FormGroup>
-                            <FormGroup row>
-                                <Col sm={2}>
-                                </Col>
-                                <Col sm={2}>
-                                    <Label htmlFor="isbn" style={{fontWeight: 'bold'}}>User Name</Label>
-                                </Col>
-                                <Col sm={3}>
-                                    <Input type="text" className="form-control" name="userName" value={this.props.userName}
-                                       onChange={this.onChange.bind(this)} placeholder="User Name"/></Col>
-                                <Col sm={2}>
-                                </Col>
-                            </FormGroup>
-
-                            <FormGroup row>
-                                <Col sm={2}>
-                                </Col>
-                                <Col sm={2}>
-                                    <Label htmlFor="published_date" style={{fontWeight: 'bold'}}>Password</Label>
-                                </Col>
-                                <Col sm={3}>
-                                    <Input type="password" className="form-control" name="password"
-                                           value={this.props.password}
-                                           onChange={this.onChange.bind(this)} placeholder="Password"/>
-                                </Col>
-                                <Col sm={2}>
-                                </Col>
-                            </FormGroup>
-                            <FormGroup row>
-
-                                <input type="button"
-                                       onClick={this.saveProfile.bind(this)} value="Save"
-                                       className="btn btn-success btn-next"/>
-                            </FormGroup>
-
-                    </form>
-                    <Footer/>
-                </div>
-        )
-        }
-        return (
-            <div className="main-container">
-
-                <HeaderUser/>
-                <form encType="multipart/form-data" className="container" onSubmit={this.onSubmit}>
-
-                    <div>
-                        <FormGroup row>
-                            <Col sm={2}>
-                            </Col>
-                            <div className="previewComponent">
-
-                                <div className="imgPreview ">
-                                    {<img className="img-profile" src={this.state.profilePhoto} />}
-                                </div>
-                            </div>
-                        </FormGroup>
-                        <FormGroup row>
-                            <Col sm={2}>
-                            </Col>
-                            <Col sm={2}>
-                                <Label htmlFor="title" style={{fontSize:'20px',fontFamily:'Sans Serif',fontWeight: 'bold'}}>My Profile</Label>
-                            </Col>
-                            <Col sm={3}>
-                            </Col>
-                            <Col sm={2}> <img src={Edit} alt="" className="image-del" onClick={this.toggleEdit}/>
-                            </Col>
-
-                        </FormGroup>
-                        <FormGroup row>
-                            <Col sm={2}>
-                            </Col>
-                            <Col sm={2}>
-                                <Label htmlFor="isbn" style={{fontWeight: 'bold'}}>First Name</Label>
-                            </Col>
-                            <Col sm={3}>
-                                {this.props.firstName}</Col>
                             <Col sm={2}>
                             </Col>
                         </FormGroup>
@@ -307,7 +264,8 @@ class ProfileScreen extends Component {
                                 <Label htmlFor="isbn" style={{fontWeight: 'bold'}}>Last Name</Label>
                             </Col>
                             <Col sm={3}>
-                                {this.props.lastName}</Col>
+                                <Input type="text" className="form-control" name="lastName" value={this.props.lastName}
+                                       onChange={this.onChange.bind(this)} placeholder="Last Name"/></Col>
                             <Col sm={2}>
                             </Col>
                         </FormGroup>
@@ -318,7 +276,8 @@ class ProfileScreen extends Component {
                                 <Label htmlFor="isbn" style={{fontWeight: 'bold'}}>User Name</Label>
                             </Col>
                             <Col sm={3}>
-                                {this.props.userName}</Col>
+                                <Input type="text" className="form-control" name="userName" value={this.props.userName}
+                                       onChange={this.onChange.bind(this)} placeholder="User Name"/></Col>
                             <Col sm={2}>
                             </Col>
                         </FormGroup>
@@ -328,6 +287,95 @@ class ProfileScreen extends Component {
                             </Col>
                             <Col sm={2}>
                                 <Label htmlFor="published_date" style={{fontWeight: 'bold'}}>Password</Label>
+                            </Col>
+                            <Col sm={3}>
+                                <Input type="password" className="form-control" name="password"
+                                       value={this.props.password}
+                                       onChange={this.onChange.bind(this)} placeholder="Password"/>
+                            </Col>
+                            <Col sm={2}>
+                            </Col>
+                        </FormGroup>
+                        <FormGroup row>
+
+                            <input type="button"
+                                   onClick={this.saveProfile.bind(this)} value="Save"
+                                   className="btn btn-success btn-next"/>
+                        </FormGroup>
+
+                    </form>
+                    <Footer/>
+                </div>
+            )
+        }
+        return (
+            <div className="main-container">
+
+                <HeaderUser/>
+                <form encType="multipart/form-data" className="container" onSubmit={this.onSubmit}>
+
+                    <div>
+                        <FormGroup row>
+                            <Col sm={3}>
+                            </Col>
+                            <div className="previewComponent">
+
+                                <div className="imgPreview ">
+                                    {<img className="img-profile" src={this.state.profilePhoto} />}
+                                </div>
+                            </div>
+                        </FormGroup>
+                        <FormGroup row>
+                            <Col sm={3}>
+                            </Col>
+                            <Col sm={2}>
+                                <Label htmlFor="title" style={{fontSize:'20px',fontWeight: 'bold'}}>My Profile</Label>
+                            </Col>
+                            <Col sm={3}>
+                            </Col>
+                            <Col sm={2}> <img src={Edit} alt="" className="image-del" onClick={this.toggleEdit}/>
+                            </Col>
+
+                        </FormGroup>
+                        <FormGroup row>
+                            <Col sm={3}>
+                            </Col>
+                            <Col sm={2}>
+                                <Label htmlFor="isbn">First Name</Label>
+                            </Col>
+                            <Col sm={3}>
+                                {this.props.firstName}</Col>
+                            <Col sm={2}>
+                            </Col>
+                        </FormGroup>
+                        <FormGroup row>
+                            <Col sm={3}>
+                            </Col>
+                            <Col sm={2}>
+                                <Label htmlFor="isbn" >Last Name</Label>
+                            </Col>
+                            <Col sm={3}>
+                                {this.props.lastName}</Col>
+                            <Col sm={2}>
+                            </Col>
+                        </FormGroup>
+                        <FormGroup row>
+                            <Col sm={3}>
+                            </Col>
+                            <Col sm={2}>
+                                <Label htmlFor="isbn" >User Name</Label>
+                            </Col>
+                            <Col sm={3}>
+                                {this.props.userName}</Col>
+                            <Col sm={2}>
+                            </Col>
+                        </FormGroup>
+
+                        <FormGroup row>
+                            <Col sm={3}>
+                            </Col>
+                            <Col sm={2}>
+                                <Label htmlFor="published_date">Password</Label>
                             </Col>
                             <Col sm={3}>
                                 {this.props.password}</Col>

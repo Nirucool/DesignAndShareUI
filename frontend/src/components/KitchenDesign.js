@@ -231,6 +231,17 @@ class KitchenDesign extends Component {
             console.log(response)
         })
             .catch(error => console.log(error));
+        this.setState(
+            {
+                kitchenAllImages: [],
+                kitchenAllCount: [],
+                kitchenAllLikes: [],
+                kitchenImages: [],
+                kitchenCount: [],
+                kitchenLikes:[],
+                kitchen: [{kitchenImage: '', kitchenCount: 0, kitchenLikes: []}],
+            });
+        window.location.reload();
     }
 
     handleImageChange(e) {
@@ -434,7 +445,7 @@ class KitchenDesign extends Component {
         if (kitchenPhoto) {
             $imagePreview = (<img className="img-design" src={kitchenPhoto}/>);
         } else {
-            $imagePreview = (<div className="previewText">Please select Kitchen Design</div>);
+            $imagePreview = (<div className="previewText">Please select kitchen design</div>);
         }
         return (
             <div className="main-container">
@@ -454,7 +465,7 @@ class KitchenDesign extends Component {
                         </button>
                     </div>
                     <div className='card-list'>
-                        <Label htmlFor="isbn" style={{fontStyle: 'oblique', fontSize: '30px'}}>Kitchen Designs</Label>
+                        <Label htmlFor="isbn" style={{fontStyle: 'oblique', fontSize: '20px'}}>Kitchen Designs</Label>
                         <CardDeck>
                             {this.state.kitchenAllImages.map((tile, id) => (
                                     <Card style={{display: 'grid', height: '33.33%', width: '33.33%'}}>
