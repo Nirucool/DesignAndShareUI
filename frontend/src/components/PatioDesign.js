@@ -240,8 +240,8 @@ class PatioDesign extends Component {
             console.log(response)
         })
             .catch(error => console.log(error));
-
-        this.setState(
+/*
+        /this.setState(
             {
                 patioAllImages: [],
                 patioAllCount: [],
@@ -261,7 +261,7 @@ class PatioDesign extends Component {
             credentials: 'same-origin',
         }).then(response => response.json())
             .then(result => this.setDesignDetails(result))
-            .catch(error => console.log(error));
+            .catch(error => console.log(error));*/
         window.location.reload();
     }
 

@@ -28,8 +28,8 @@
       <file leaf-file-name="PatioDesign.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/frontend/src/components/PatioDesign.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="426">
-              <caret line="263" column="48" selection-start-line="263" selection-start-column="48" selection-end-line="263" selection-end-column="48" />
+            <state relative-caret-position="491">
+              <caret line="264" column="33" lean-forward="true" selection-start-line="264" selection-start-column="33" selection-end-line="264" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -309,12 +309,12 @@
       <workItem from="1535078047205" duration="4783000" />
       <workItem from="1535153109358" duration="1738000" />
       <workItem from="1535465997237" duration="586000" />
-      <workItem from="1537488923607" duration="3803000" />
+      <workItem from="1537488923607" duration="4342000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45341000" />
+    <option name="totallyTimeSpent" value="45880000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="730" extended-state="0" />
@@ -733,8 +733,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/src/components/PatioDesign.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="263" column="48" selection-start-line="263" selection-start-column="48" selection-end-line="263" selection-end-column="48" />
+        <state relative-caret-position="491">
+          <caret line="264" column="33" lean-forward="true" selection-start-line="264" selection-start-column="33" selection-end-line="264" selection-end-column="33" />
         </state>
       </provider>
     </entry>
