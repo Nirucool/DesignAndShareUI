@@ -225,16 +225,6 @@ class PatioDesign extends Component {
         data["kitchen"] = kitchen;
         data["kitchenGarden"] = kitchenGarden;
         data["diy"] = diy;
-        this.setState(
-            {
-                patioAllImages: [],
-                patioAllCount: [],
-                patioAllLikes: [],
-                patioImages: [],
-                patioCount: [],
-                patioLikes:[],
-                patio: [{patioImage: '', patioCount: 0, patioLikes: []}],
-            });
         console.log(JSON.stringify(data, null, 4));
         fetch('https://designandsharebackend.herokuapp.com/design/', {
             body: JSON.stringify(data),
@@ -251,7 +241,27 @@ class PatioDesign extends Component {
         })
             .catch(error => console.log(error));
 
-
+        this.setState(
+            {
+                patioAllImages: [],
+                patioAllCount: [],
+                patioAllLikes: [],
+                patioImages: [],
+                patioCount: [],
+                patioLikes:[],
+                patio: [{patioImage: '', patioCount: 0, patioLikes: []}],
+            });
+        fetch('https://designandsharebackend.herokuapp.com/design/', {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            withCredentials: true,
+            credentials: 'same-origin',
+        }).then(response => response.json())
+            .then(result => this.setDesignDetails(result))
+            .catch(error => console.log(error));
         window.location.reload();
     }
 
