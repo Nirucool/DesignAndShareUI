@@ -258,7 +258,7 @@ class ProfileScreen extends Component {
                             </Col>
                         </FormGroup>
                         <FormGroup row>
-                            <Col sm={2}>
+                            <Col sm={3}>
                             </Col>
                             <Col sm={2}>
                                 <Label htmlFor="isbn" style={{fontWeight: 'bold'}}>Last Name</Label>
@@ -270,7 +270,7 @@ class ProfileScreen extends Component {
                             </Col>
                         </FormGroup>
                         <FormGroup row>
-                            <Col sm={2}>
+                            <Col sm={3}>
                             </Col>
                             <Col sm={2}>
                                 <Label htmlFor="isbn" style={{fontWeight: 'bold'}}>User Name</Label>
@@ -283,7 +283,7 @@ class ProfileScreen extends Component {
                         </FormGroup>
 
                         <FormGroup row>
-                            <Col sm={2}>
+                            <Col sm={3}>
                             </Col>
                             <Col sm={2}>
                                 <Label htmlFor="published_date" style={{fontWeight: 'bold'}}>Password</Label>
