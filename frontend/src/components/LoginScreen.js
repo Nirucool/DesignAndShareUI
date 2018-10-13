@@ -6,6 +6,7 @@ import {userActions} from '../actions';
 import PropTypes from 'prop-types';
 import Header from './Header';
 import Footer from './Footer';
+import Iframe from 'react-iframe';
 
 function validate(userName, password, userNameList, passwordList) {
     // store errors for all fields in single array
@@ -118,7 +119,7 @@ class LoginScreen extends Component {
             <div>
                 <Header/>
                 <form className="container">
-                    <div style={{marginLeft: '25%', color: 'red'}}>
+                    <div style={{marginLeft: '35%', color: 'red'}}>
                         {errors.map(error => (
                             <p key={error}>Error: {error}</p>
                         ))}
@@ -173,6 +174,14 @@ class LoginScreen extends Component {
                                    className="btn btn-success btn-next"/>
                             <Link to="/registration"
                                   style={{marginLeft: '40px', color: 'dodgerblue'}}>Register</Link>&nbsp;
+                        </FormGroup>
+                        <FormGroup row>
+                            <Col sm={3}>
+                            </Col>
+                            <Col sm={4}>
+                                <Iframe url="https://giphy.com/embed/NzYVvp40I3EGc" width="430" height="300" frameBorder="0"
+                                        className="giphy-embed"/>
+                            </Col>
                         </FormGroup>
                     </div>
                 </form>

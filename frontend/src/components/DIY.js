@@ -3,9 +3,11 @@ import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {Label} from 'reactstrap';
 import HeaderUser from './HeaderUser';
+import HeaderPages from './HeaderPages';
 import Footer from './Footer';
 import {CardDeck} from 'reactstrap';
 import {IconButton, Typography, CardContent, CardMedia, Card} from '@material-ui/core';
+import Iframe from 'react-iframe';
 
 
 class DIY extends Component {
@@ -438,9 +440,11 @@ class DIY extends Component {
         }
         return (
             <div className="main-container">
-                <HeaderUser/>
+                <HeaderPages/>
                 <form className="container">
                     <div className="previewComponent">
+                        <Iframe url="https://giphy.com/embed/4xckU0jZYnui4" width="300" height="300" frameBorder="0"
+                                className="giphy-embed"/>
                         <input className="fileInput"
                                type="file" style={{marginLeft: '33.33%'}}
                                onChange={(e) => this.handleImageChange(e)}/>

@@ -3,10 +3,10 @@ import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {Label} from 'reactstrap';
 import HeaderUser from './HeaderUser';
+import HeaderPages from './HeaderPages';
 import Footer from './Footer';
 import {CardDeck} from 'reactstrap';
 import {IconButton, Typography, CardContent, CardMedia, Card} from '@material-ui/core';
-
 
 class KidsRoomDesign extends Component {
 
@@ -438,7 +438,7 @@ class KidsRoomDesign extends Component {
         }
         return (
             <div className="main-container">
-                <HeaderUser/>
+                <HeaderPages/>
                 <form className="container">
                     <div className="previewComponent">
                         <input className="fileInput"

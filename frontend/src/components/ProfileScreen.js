@@ -297,7 +297,8 @@ class ProfileScreen extends Component {
                             </Col>
                         </FormGroup>
                         <FormGroup row>
-
+                            <Col sm={2}>
+                            </Col>
                             <input type="button"
                                    onClick={this.saveProfile.bind(this)} value="Save"
                                    className="btn btn-success btn-next"/>
@@ -316,7 +317,7 @@ class ProfileScreen extends Component {
 
                     <div>
                         <FormGroup row>
-                            <Col sm={3}>
+                            <Col sm={4}>
                             </Col>
                             <div className="previewComponent">
 
