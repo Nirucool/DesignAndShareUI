@@ -38,6 +38,7 @@ function validate(firstName, lastName, userName, password, userNameList) {
     return errors;
 }
 
+
 class ProfileScreen extends Component {
 
     constructor(props) {
@@ -230,7 +231,7 @@ class ProfileScreen extends Component {
 
                             <div className="previewComponent">
                                 <input className="fileInput"
-                                       type="file"  style={{marginLeft:'30%'}}
+                                       type="file"  style={{marginLeft:'50%',width:'65%'}}
                                        onChange={(e)=>this.handleImageChange(e)} />
 
                                 <div className="imgPreview">
@@ -242,17 +243,17 @@ class ProfileScreen extends Component {
                             <Col sm={3}>
                             </Col>
                             <Col sm={5}>
-                                <Label htmlFor="title" style={{fontSize:'20px',fontWeight: 'bold'}}>My Profile</Label>
+                                <Label htmlFor="title" style={{fontSize:'15px',fontFamily:'Sans Serif',fontWeight: 'bold'}}>My Profile</Label>
                             </Col>
                         </FormGroup>
                         <FormGroup row>
                             <Col sm={3}>
                             </Col>
                             <Col sm={2}>
-                                <Label htmlFor="isbn">First Name</Label>
+                                <Label htmlFor="isbn" style={{fontWeight: 'bold'}}>First Name</Label>
                             </Col>
                             <Col sm={3}>
-                                <Input type="text" className="form-control" name="firstName" value={this.props.firstName}
+                                <Input type="text" style={{fontSize:'12px'}} className="form-control" name="firstName" value={this.props.firstName}
                                        onChange={this.onChange.bind(this)} placeholder="First Name"/></Col>
                             <Col sm={2}>
                             </Col>
@@ -264,7 +265,7 @@ class ProfileScreen extends Component {
                                 <Label htmlFor="isbn" style={{fontWeight: 'bold'}}>Last Name</Label>
                             </Col>
                             <Col sm={3}>
-                                <Input type="text" className="form-control" name="lastName" value={this.props.lastName}
+                                <Input type="text" style={{fontSize:'12px'}} className="form-control" name="lastName" value={this.props.lastName}
                                        onChange={this.onChange.bind(this)} placeholder="Last Name"/></Col>
                             <Col sm={2}>
                             </Col>
@@ -276,7 +277,7 @@ class ProfileScreen extends Component {
                                 <Label htmlFor="isbn" style={{fontWeight: 'bold'}}>User Name</Label>
                             </Col>
                             <Col sm={3}>
-                                <Input type="text" className="form-control" name="userName" value={this.props.userName}
+                                <Input type="text"  style={{fontSize:'12px'}} className="form-control" name="userName" value={this.props.userName}
                                        onChange={this.onChange.bind(this)} placeholder="User Name"/></Col>
                             <Col sm={2}>
                             </Col>
@@ -289,7 +290,7 @@ class ProfileScreen extends Component {
                                 <Label htmlFor="published_date" style={{fontWeight: 'bold'}}>Password</Label>
                             </Col>
                             <Col sm={3}>
-                                <Input type="password" className="form-control" name="password"
+                                <Input type="password"  style={{fontSize:'12px'}} className="form-control" name="password"
                                        value={this.props.password}
                                        onChange={this.onChange.bind(this)} placeholder="Password"/>
                             </Col>
@@ -297,10 +298,10 @@ class ProfileScreen extends Component {
                             </Col>
                         </FormGroup>
                         <FormGroup row>
-                            <Col sm={2}>
+                            <Col sm={1}>
                             </Col>
                             <input type="button"
-                                   onClick={this.saveProfile.bind(this)} value="Save"
+                                   onClick={this.saveProfile.bind(this)}  style={{fontSize:'12px'}} value="Save"
                                    className="btn btn-success btn-next"/>
                         </FormGroup>
 
@@ -330,7 +331,7 @@ class ProfileScreen extends Component {
                             <Col sm={3}>
                             </Col>
                             <Col sm={2}>
-                                <Label htmlFor="title" style={{fontSize:'20px',fontWeight: 'bold'}}>My Profile</Label>
+                                <Label htmlFor="title" style={{fontSize:'15px',fontFamily:'Sans Serif',fontWeight: 'bold'}}>My Profile</Label>
                             </Col>
                             <Col sm={3}>
                             </Col>
@@ -342,7 +343,7 @@ class ProfileScreen extends Component {
                             <Col sm={3}>
                             </Col>
                             <Col sm={2}>
-                                <Label htmlFor="isbn">First Name</Label>
+                                <Label htmlFor="isbn" style={{fontWeight: 'bold'}}>First Name</Label>
                             </Col>
                             <Col sm={3}>
                                 {this.props.firstName}</Col>
@@ -353,7 +354,7 @@ class ProfileScreen extends Component {
                             <Col sm={3}>
                             </Col>
                             <Col sm={2}>
-                                <Label htmlFor="isbn" >Last Name</Label>
+                                <Label htmlFor="isbn" style={{fontWeight: 'bold'}}>Last Name</Label>
                             </Col>
                             <Col sm={3}>
                                 {this.props.lastName}</Col>
@@ -364,7 +365,7 @@ class ProfileScreen extends Component {
                             <Col sm={3}>
                             </Col>
                             <Col sm={2}>
-                                <Label htmlFor="isbn" >User Name</Label>
+                                <Label htmlFor="isbn" style={{fontWeight: 'bold'}}>User Name</Label>
                             </Col>
                             <Col sm={3}>
                                 {this.props.userName}</Col>
@@ -376,7 +377,7 @@ class ProfileScreen extends Component {
                             <Col sm={3}>
                             </Col>
                             <Col sm={2}>
-                                <Label htmlFor="published_date">Password</Label>
+                                <Label htmlFor="published_date" style={{fontWeight: 'bold'}}>Password</Label>
                             </Col>
                             <Col sm={3}>
                                 {this.props.password}</Col>

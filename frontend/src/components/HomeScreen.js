@@ -124,7 +124,7 @@ class HomeScreen extends Component {
             };
         const content = (content) => {
             if(content==="patioDesign")
-            return ("Patio Designs");
+                return ("Patio Designs");
             else if(content==="kidsRoomDesign")
                 return ("Kids Room Designs");
             else if(content==="livingRoomDesign")
@@ -144,19 +144,19 @@ class HomeScreen extends Component {
                 <form className="container">
                     <div className='card-list'>
                         <CardDeck>
-                        {this.state.imageDataList.map((tile, id) => (
-                                <Card  style={{display:'grid', height: '33.33%', width: '33.33%'}}>
-                                    <CardMedia
-                                        className="media"
-                                    image={tile}
-                                    title="Contemplative Reptile"
-                                    style={styles.media}/>
-                                    <CardContent>
-                                        <Typography><Link to={`/${this.state.typeList[id]}`}>{content(this.state.typeList[id])}</Link></Typography>
-                                    </CardContent>
-                                </Card>
-                            )
-                        )}
+                            {this.state.imageDataList.map((tile, id) => (
+                                    <Card  style={{display:'grid', height: '25%', width: '25%'}}>
+                                        <CardMedia
+                                            className="media"
+                                            image={tile}
+                                            title="Contemplative Reptile"
+                                            style={styles.media}/>
+                                        <CardContent>
+                                            <Typography><Link to={`/${this.state.typeList[id]}`}>{content(this.state.typeList[id])}</Link></Typography>
+                                        </CardContent>
+                                    </Card>
+                                )
+                            )}
                         </CardDeck>
                     </div>
 

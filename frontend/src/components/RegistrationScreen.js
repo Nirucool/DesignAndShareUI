@@ -146,30 +146,18 @@ class RegistrationScreen extends Component {
                             <Col sm={3}>
                             </Col>
                             <Col sm={5}>
-                                <Label htmlFor="title" style={{fontSize:'20px',marginTop:'50px',fontWeight: 'bold'}}>Register</Label>
+                                <Label htmlFor="title" style={{fontSize:'15px',marginTop:'30px',fontWeight: 'bold'}}>Register</Label>
                             </Col>
                         </FormGroup>
                         <FormGroup row>
                             <Col sm={3}>
                             </Col>
                             <Col sm={2}>
-                                <Label htmlFor="isbn" style={{fontSize: '15px'}}>First Name</Label>
+                                <Label htmlFor="isbn">First Name</Label>
                             </Col>
                             <Col sm={3}>
-                                <Input type="text" className="form-control" name="firstName" value={this.props.firstName}
-                                       onChange={this.onChange.bind(this)} placeholder="First Name" style={{fontSize: '15px'}}/></Col>
-                            <Col sm={2}>
-                            </Col>
-                        </FormGroup>
-                        <FormGroup row>
-                            <Col sm={3}>
-                            </Col>
-                            <Col sm={2}>
-                                <Label htmlFor="isbn" style={{fontSize: '15px'}}>Last Name</Label>
-                            </Col>
-                            <Col sm={3}>
-                                <Input type="text" className="form-control" name="lastName" value={this.props.lastName}
-                                       onChange={this.onChange.bind(this)} placeholder="Last Name" style={{fontSize: '15px'}}/></Col>
+                                <Input type="text" style={{fontSize: '12px'}} className="form-control" name="firstName" value={this.props.firstName}
+                                       onChange={this.onChange.bind(this)} placeholder="First Name" /></Col>
                             <Col sm={2}>
                             </Col>
                         </FormGroup>
@@ -177,11 +165,23 @@ class RegistrationScreen extends Component {
                             <Col sm={3}>
                             </Col>
                             <Col sm={2}>
-                                <Label htmlFor="isbn" style={{fontSize: '15px'}}>User Name</Label>
+                                <Label htmlFor="isbn" style={{fontSize: '12px'}}>Last Name</Label>
                             </Col>
                             <Col sm={3}>
-                                <Input type="text" className="form-control" name="userName" value={this.props.userName}
-                                       onChange={this.onChange.bind(this)} placeholder="User Name" style={{fontSize: '15px'}}/></Col>
+                                <Input type="text" style={{fontSize:'12px'}} className="form-control" name="lastName" value={this.props.lastName}
+                                       onChange={this.onChange.bind(this)} placeholder="Last Name" /></Col>
+                            <Col sm={2}>
+                            </Col>
+                        </FormGroup>
+                        <FormGroup row>
+                            <Col sm={3}>
+                            </Col>
+                            <Col sm={2}>
+                                <Label htmlFor="isbn" style={{fontSize: '12px'}}>User Name</Label>
+                            </Col>
+                            <Col sm={3}>
+                                <Input type="text" style={{fontSize: '12px'}} className="form-control" name="userName" value={this.props.userName}
+                                       onChange={this.onChange.bind(this)} placeholder="User Name"/></Col>
                             <Col sm={2}>
                             </Col>
                         </FormGroup>
@@ -190,12 +190,12 @@ class RegistrationScreen extends Component {
                             <Col sm={3}>
                             </Col>
                             <Col sm={2}>
-                                <Label htmlFor="published_date" style={{fontSize: '15px'}}>Password</Label>
+                                <Label htmlFor="published_date" style={{fontSize: '12px'}}>Password</Label>
                             </Col>
                             <Col sm={3}>
-                                <Input type="password" className="form-control" name="password"
+                                <Input type="password" style={{fontSize: '12px'}} className="form-control" name="password"
                                        value={this.props.password}
-                                       onChange={this.onChange.bind(this)} placeholder="Password" style={{fontSize: '15px'}}/>
+                                       onChange={this.onChange.bind(this)} placeholder="Password"/>
                             </Col>
                             <Col sm={2}>
                             </Col>
@@ -204,7 +204,7 @@ class RegistrationScreen extends Component {
                             <Col sm={1}>
                             </Col>
                             <input type="button"
-                                   onClick={this.handleLink.bind(this)} value="Submit"
+                                   onClick={this.handleLink.bind(this)} value="Submit" style={{fontSize:'12px'}}
                                    className="btn btn-success btn-next"/>
 
                             <Link to="/login"

@@ -8,7 +8,7 @@ class Header extends Component {
             <Navbar fixedTop style={{backgroundColor:'black'}}>
 
                 <NavbarBrand>
-                    <img src={header} style={{"width": '200px', "height": '30px'}} alt=""/>
+                    <img src={header} style={{"width": '150px', "height": '20px'}} alt=""/>
                 </NavbarBrand>
 
             </Navbar>

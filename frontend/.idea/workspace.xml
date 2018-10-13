@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ad25274e-7a1a-4846-9c41-c85d12c71722" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="ad25274e-7a1a-4846-9c41-c85d12c71722" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -34,7 +31,7 @@
       <file leaf-file-name="LivingRoomDesign.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/LivingRoomDesign.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3000">
+            <state relative-caret-position="2985">
               <caret line="207" selection-end-line="497" />
             </state>
           </provider>
@@ -43,8 +40,8 @@
       <file leaf-file-name="LoginScreen.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/LoginScreen.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="720">
-              <caret line="55" column="57" selection-end-line="158" />
+            <state relative-caret-position="705">
+              <caret line="55" selection-end-line="158" />
             </state>
           </provider>
         </entry>
@@ -61,8 +58,8 @@
       <file leaf-file-name="KitchenDesign.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/KitchenDesign.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="32" column="31" selection-end-line="497" />
+            <state relative-caret-position="480">
+              <caret line="32" column="29" selection-end-line="497" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -73,7 +70,7 @@
       <file leaf-file-name="KitchenGardenDesign.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/KitchenGardenDesign.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
+            <state relative-caret-position="465">
               <caret line="31" column="29" selection-end-line="497" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
@@ -85,7 +82,7 @@
       <file leaf-file-name="KidsRoomDesign.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/KidsRoomDesign.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3000">
+            <state relative-caret-position="3105">
               <caret line="207" selection-end-line="497" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
@@ -125,7 +122,7 @@
         <entry file="file://$PROJECT_DIR$/src/reducer.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="15">
-              <caret line="17" column="9" lean-forward="true" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+              <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -227,9 +224,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -241,6 +237,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -288,11 +285,12 @@
       <workItem from="1534167252421" duration="2258000" />
       <workItem from="1535651561973" duration="2452000" />
       <workItem from="1536327068868" duration="1731000" />
+      <workItem from="1539414424471" duration="219000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="344782000" />
+    <option name="totallyTimeSpent" value="345001000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="27" y="23" width="1253" height="730" extended-state="0" />
@@ -303,13 +301,14 @@
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2328654" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23616846" />
       <window_info anchor="right" id="Database" order="3" weight="0.32927817" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24959612" />
@@ -321,11 +320,10 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info id="npm" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.328594" />
-      <window_info anchor="right" id="Maven Projects" order="3" />
+      <window_info id="npm" order="2" side_tool="true" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -346,15 +344,15 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/components/LivingRoomDesign.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3000">
+        <state relative-caret-position="2985">
           <caret line="207" selection-end-line="497" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/LoginScreen.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="55" column="57" selection-end-line="158" />
+        <state relative-caret-position="705">
+          <caret line="55" lean-forward="true" selection-end-line="158" />
         </state>
       </provider>
     </entry>
@@ -367,8 +365,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/KitchenDesign.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="32" column="31" selection-end-line="497" />
+        <state relative-caret-position="480">
+          <caret line="32" column="29" lean-forward="true" selection-end-line="497" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
@@ -377,7 +375,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/KitchenGardenDesign.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
+        <state relative-caret-position="465">
           <caret line="31" column="29" selection-end-line="497" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
@@ -387,7 +385,86 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/KidsRoomDesign.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3000">
+        <state relative-caret-position="3105">
+          <caret line="207" selection-end-line="497" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/ProfileScreen.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1260">
+          <caret line="92" column="38" selection-end-line="369" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/RegistrationScreen.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="36" column="42" selection-end-line="156" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/actions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="6" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="9" lean-forward="true" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/LivingRoomDesign.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2985">
+          <caret line="207" selection-end-line="497" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/LoginScreen.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="705">
+          <caret line="55" selection-end-line="158" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/PatioDesign.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="34" column="11" selection-end-line="502" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/KitchenDesign.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="32" column="29" selection-end-line="497" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/KitchenGardenDesign.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="29" selection-end-line="497" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/KidsRoomDesign.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3105">
           <caret line="207" selection-end-line="497" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
@@ -419,7 +496,7 @@
     <entry file="file://$PROJECT_DIR$/src/reducer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
-          <caret line="17" column="9" lean-forward="true" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+          <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
         </state>
       </provider>
     </entry>

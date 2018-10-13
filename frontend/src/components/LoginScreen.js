@@ -130,9 +130,9 @@ class LoginScreen extends Component {
                             </Col>
                             <Col sm={5}>
                                 <Label htmlFor="title" style={{
-                                    marginTop: '50px',
+                                    marginTop: '30px',
                                     color: 'black',
-                                    fontSize: '20px',
+                                    fontSize: '16px',
                                     fontWeight: 'bold'
                                 }}>Login</Label>
                             </Col>
@@ -141,12 +141,11 @@ class LoginScreen extends Component {
                             <Col sm={3}>
                             </Col>
                             <Col sm={2}>
-                                <Label htmlFor="userName" style={{fontSize: '15px'}}>User Name</Label>
+                                <Label htmlFor="userName" style={{fontSize:'12px',fontWeight: 'bold'}}>User Name</Label>
                             </Col>
                             <Col sm={3}>
-                                <Input type="text" className="form-control" name="userName" value={this.props.userName}
-                                       onChange={this.onChange.bind(this)} placeholder="User Name"
-                                       style={{fontSize: '15px'}}/></Col>
+                                <Input type="text" style={{fontSize:'12px'}} className="form-control" name="userName" value={this.props.userName}
+                                       onChange={this.onChange.bind(this)} placeholder="User Name"/></Col>
                             <Col sm={2}>
                             </Col>
                         </FormGroup>
@@ -155,13 +154,13 @@ class LoginScreen extends Component {
                             <Col sm={3}>
                             </Col>
                             <Col sm={2}>
-                                <Label htmlFor="password" style={{fontSize: '15px'}}>Password</Label>
+                                <Label htmlFor="password" style={{fontSize:'12px',fontWeight: 'bold'}}>Password</Label>
                             </Col>
                             <Col sm={3}>
                                 <Input type="password" className="form-control" name="password"
                                        value={this.props.password}
                                        onChange={this.onChange.bind(this)} placeholder="Password"
-                                       style={{fontSize: '15px'}}/>
+                                       style={{fontSize: '12px'}}/>
                             </Col>
                             <Col sm={2}>
                             </Col>
@@ -169,17 +168,17 @@ class LoginScreen extends Component {
                         <FormGroup row>
                             <Col sm={1}>
                             </Col>
-                            <input type="button"
+                            <input type="button" style={{fontSize:'12px'}}
                                    onClick={this.handleLink.bind(this)} value="Submit"
                                    className="btn btn-success btn-next"/>
                             <Link to="/registration"
-                                  style={{marginLeft: '40px', color: 'dodgerblue'}}>Register</Link>&nbsp;
+                                  style={{marginLeft: '40px', color: 'dodgerblue',fontSize:'12px'}}>Register</Link>&nbsp;
                         </FormGroup>
                         <FormGroup row>
-                            <Col sm={3}>
+                            <Col sm={5}>
                             </Col>
-                            <Col sm={4}>
-                                <Iframe url="https://giphy.com/embed/NzYVvp40I3EGc" width="430" height="300" frameBorder="0"
+                            <Col sm={2}>
+                                <Iframe url="https://giphy.com/embed/NzYVvp40I3EGc" width="200" height="200" frameBorder="0"
                                         className="giphy-embed"/>
                             </Col>
                         </FormGroup>
@@ -189,7 +188,6 @@ class LoginScreen extends Component {
             </div>
         );
     }
-
     static propTypes = {
         userName: PropTypes.string,
         password: PropTypes.string,

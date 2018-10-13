@@ -31,35 +31,35 @@ class HeaderUser extends Component {
             isOpen: !this.state.isOpen
         });
     };
-        render() {
-            return (
-                <div>
-                    <Navbar fixedTop style={{backgroundColor: 'black'}} >
+    render() {
+        return (
+            <div>
+                <Navbar fixedTop style={{backgroundColor: 'black'}} >
 
-                            <NavbarBrand>
-                                <img src={header} style={{"width": '250px', "height": '40px'}} alt=""/>
-                            </NavbarBrand>
+                    <NavbarBrand>
+                        <img src={header} style={{"width": '150px', "height": '20px'}} alt=""/>
+                    </NavbarBrand>
 
-                        <Collapse isOpen={this.state.isOpen}>
-                            <UncontrolledDropdown  style={{color: 'white'}}>
-                                {this.props.firstName} {this.props.lastName}
-                                <DropdownToggle nav caret>
-                                </DropdownToggle>
-                                <DropdownMenu right>
+                    <Collapse isOpen={this.state.isOpen}>
+                        <UncontrolledDropdown  style={{color: 'white',fontSize:'12px'}}>
+                            {this.props.firstName} {this.props.lastName}
+                            <DropdownToggle nav caret>
+                            </DropdownToggle>
+                            <DropdownMenu right>
                                 <DropdownItem>
                                     <Link to="/home" onClick={this.handleLink}>Home</Link>
                                 </DropdownItem>
-                                    <DropdownItem>
-                                        <Link to="/profile" onClick={this.handleLink}>My Profile</Link>
-                                    </DropdownItem>
+                                <DropdownItem>
+                                    <Link to="/profile" onClick={this.handleLink}>My Profile</Link>
+                                </DropdownItem>
                                 <DropdownItem>
                                     <Link to="/login" onClick={this.handleLink}>Log out</Link>
                                 </DropdownItem>
-                                </DropdownMenu>
-                            </UncontrolledDropdown>
-                        </Collapse>
-                    </Navbar>
-                </div>
+                            </DropdownMenu>
+                        </UncontrolledDropdown>
+                    </Collapse>
+                </Navbar>
+            </div>
 
 
         );

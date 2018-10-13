@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {Label} from 'reactstrap';
-import HeaderUser from './HeaderUser';
 import HeaderPages from './HeaderPages';
 import Footer from './Footer';
 import {CardDeck} from 'reactstrap';
@@ -443,20 +442,20 @@ class LivingRoomDesign extends Component {
                 <form className="container">
                     <div className="previewComponent">
                         <input className="fileInput"
-                               type="file" style={{marginLeft: '33.33%'}}
+                               type="file" style={{marginLeft: '39%',width:'22%'}}
                                onChange={(e) => this.handleImageChange(e)}/>
 
-                        <div className="imgDesignPreview" style={{marginLeft: '33.33%'}}>
+                        <div className="imgDesignPreview" style={{marginLeft: '39%',width:'22%'}}>
                             {$imagePreview}
                         </div>
                         <button className="submitButton"
                                 type="submit"
-                                style={{marginLeft: '45%'}} onClick={(e) => this.handleSubmit(e)}>Save Image
+                                style={{marginLeft: '46%'}} onClick={(e) => this.handleSubmit(e)}>Save Image
                         </button>
                     </div>
                     <div className='card-list'>
-                        <Label htmlFor="isbn" style={{fontStyle: 'oblique', fontSize: '20px'}}>Living Room Designs</Label>
-                        <CardDeck>
+                        <Label htmlFor="isbn" style={{marginLeft:'16%',fontStyle: 'oblique', fontSize: '12px'}}>Living Room Designs</Label>
+                        <CardDeck style={{marginLeft:'16%',marginRight:'16%'}}>
                             {this.state.livingRoomAllImages.map((tile, id) => (
                                     <Card style={{display: 'grid', height: '33.33%', width: '33.33%'}}>
                                         <CardMedia
@@ -465,7 +464,7 @@ class LivingRoomDesign extends Component {
                                             title="Patio Images"
                                             style={styles.media}/>
                                         <CardContent>
-                                            <Typography>
+                                            <Typography style={{fontSize:'10px'}}>
                                                 {favourite(id)}
                                                 {this.state.livingRoomAllCount[id] + " likes " + this.state.livingRoomAllLikes[id]}
                                             </Typography>
