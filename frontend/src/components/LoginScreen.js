@@ -177,10 +177,10 @@ class LoginScreen extends Component {
                         <FormGroup row>
                             <Col sm={5}>
                             </Col>
-                            <Col sm={2}>
-                                <Iframe url="https://giphy.com/embed/NzYVvp40I3EGc" width="200" height="200" frameBorder="0"
-                                        className="giphy-embed"/>
-                            </Col>
+                            {/*<Col sm={2}>*/}
+                                {/*<Iframe url="https://giphy.com/embed/NzYVvp40I3EGc" width="200" height="200" frameBorder="0"*/}
+                                        {/*className="giphy-embed"/>*/}
+                            {/*</Col>*/}
                         </FormGroup>
                     </div>
                 </form>

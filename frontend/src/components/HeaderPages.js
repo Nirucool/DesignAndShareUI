@@ -110,9 +110,9 @@ class HeaderPages extends Component {
                             <MenuItem><a className="nav-link" href="/diy"
                                          style={{color: 'black', backgroundColor: '#17a2b8'}}>Do It
                                 YourSelf</a></MenuItem>
-                            <MenuItem><Iframe url="https://giphy.com/embed/ftxG9wXu6RpbW" width="220" height="200"
-                                              style="position:absolute" frameBorder="0"
-                                              className="giphy-embed"/></MenuItem>
+                            {/*<MenuItem><Iframe url="https://giphy.com/embed/ftxG9wXu6RpbW" width="220" height="200"*/}
+                                              {/*style="position:absolute" frameBorder="0"*/}
+                                              {/*className="giphy-embed"/></MenuItem>*/}
 
                         </Drawer>
 

@@ -345,7 +345,7 @@ class ProfileScreen extends Component {
                             <Col sm={2}>
                                 <Label htmlFor="isbn" style={{fontWeight: 'bold'}}>First Name</Label>
                             </Col>
-                            <Col sm={3}>
+                            <Col sm={3} style={{textAlign:'center'}}>
                                 {this.props.firstName}</Col>
                             <Col sm={2}>
                             </Col>
@@ -356,7 +356,7 @@ class ProfileScreen extends Component {
                             <Col sm={2}>
                                 <Label htmlFor="isbn" style={{fontWeight: 'bold'}}>Last Name</Label>
                             </Col>
-                            <Col sm={3}>
+                            <Col sm={3} style={{textAlign:'center'}}>
                                 {this.props.lastName}</Col>
                             <Col sm={2}>
                             </Col>
@@ -367,7 +367,7 @@ class ProfileScreen extends Component {
                             <Col sm={2}>
                                 <Label htmlFor="isbn" style={{fontWeight: 'bold'}}>User Name</Label>
                             </Col>
-                            <Col sm={3}>
+                            <Col sm={3} style={{textAlign:'center'}}>
                                 {this.props.userName}</Col>
                             <Col sm={2}>
                             </Col>
@@ -379,7 +379,7 @@ class ProfileScreen extends Component {
                             <Col sm={2}>
                                 <Label htmlFor="published_date" style={{fontWeight: 'bold'}}>Password</Label>
                             </Col>
-                            <Col sm={3}>
+                            <Col sm={3} style={{textAlign:'center'}}>
                                 {this.props.password}</Col>
                             <Col sm={2}>
                             </Col>
